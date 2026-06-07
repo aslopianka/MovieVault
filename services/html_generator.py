@@ -1,6 +1,12 @@
+import os
+import shutil
 
 
 def generate_html(template_data, title, movies_data):
+    # needs to happen here because /dist is in .gitignore
+    os.makedirs("dist", exist_ok=True)
+    shutil.copy("templates/style.css", "dist/style.css")
+
     movie_items = []
     full_html = ""
     for movie_name, movie_data in movies_data.items():
@@ -12,7 +18,7 @@ def generate_html(template_data, title, movies_data):
                      alt="{movie_name}"/>
                 <div class="movie-title">{movie_name}</div>
                 <div class="movie-year">{movie_data.get("year", "-")}</div>
-                <div class="movie-rating">{movie_data.get("rating", "-")}</div>
+                <div class="movie-rating">Rating: {movie_data.get("rating", "-")}</div>
             </div>
          </li>
                     """
