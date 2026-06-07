@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# IDE
+.idea/
+
+# Database
+*.db
+
+# Generated files
+*.jpg
+dist/
