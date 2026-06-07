@@ -12,6 +12,7 @@ def generate_html(template_data, title, movies_data):
                      alt="{movie_name}"/>
                 <div class="movie-title">{movie_name}</div>
                 <div class="movie-year">{movie_data.get("year", "-")}</div>
+                <div class="movie-rating">{movie_data.get("rating", "-")}</div>
             </div>
          </li>
                     """
