@@ -211,6 +211,7 @@ def get_rating_histogram(file_name):
 
 
 def generate_website():
+    """Generate the static movie website from the HTML template."""
     movie_data = movie_db.list_movies()
     with open(TEMPLATE_PATH, 'r') as fr:
         template_data = fr.read()

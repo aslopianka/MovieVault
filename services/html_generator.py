@@ -1,8 +1,11 @@
+"""HTML generation for the movie website."""
+
 import os
 import shutil
 
 
 def generate_html(template_data, title, movies_data):
+    """Populate the HTML template with movie data and copy assets to dist/."""
     # needs to happen here because /dist is in .gitignore
     os.makedirs("dist", exist_ok=True)
     shutil.copy("templates/style.css", "dist/style.css")
