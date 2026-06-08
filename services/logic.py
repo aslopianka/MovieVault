@@ -40,7 +40,7 @@ def add_movie(movie_name):
 
     api_response = fetch_movie_data(movie_name)
     if api_response["Response"] == 'True':
-        movie_db.add_movie(api_response["Title"], api_response["Year"], api_response["imdbRating"], api_response["Poster"])
+        movie_db.add_movie(api_response["Title"], api_response["Year"], api_response["imdbRating"], api_response["Poster"], api_response["imdbID"])
     else: raise ValueError(api_response["Error"])
 
     return {

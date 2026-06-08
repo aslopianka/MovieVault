@@ -13,12 +13,15 @@ def generate_html(template_data, title, movies_data):
         movie_html = f"""
          <li>
             <div class="movie">
-                <img class="movie-poster"
-                     src="{movie_data.get("poster_url")}"
-                     alt="{movie_name}"/>
+                <a href="https://www.imdb.com/title/{movie_data.get('imdbID')}/" target="_blank"> 
+                    <img class="movie-poster"
+                         src="{movie_data.get("poster_url")}"
+                         alt="{movie_name}"/>
+                </a>
                 <div class="movie-title">{movie_name}</div>
-                <div class="movie-year">{movie_data.get("year", "-")}</div>
                 <div class="movie-rating">Rating: {movie_data.get("rating", "-")}</div>
+                <div class="movie-year">{movie_data.get("year", "-")}</div>
+                
             </div>
          </li>
                     """

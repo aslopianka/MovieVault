@@ -20,7 +20,8 @@ def init_db():
                 title TEXT UNIQUE NOT NULL,
                 year INTEGER NOT NULL,
                 rating REAL NOT NULL,
-                poster_url TEXT
+                poster_url TEXT,
+                imdbID TEXT
             )"""
         ))
         connection.commit()
@@ -29,18 +30,18 @@ def init_db():
 def list_movies():
     """Retrieve all movies from the database."""
     with engine.connect() as connection:
-        result = connection.execute(text("SELECT title, year, rating, poster_url FROM movies"))
+        result = connection.execute(text("SELECT title, year, rating, poster_url, imdbID FROM movies"))
         movies = result.fetchall()
 
-    return {row[0]: {"year": row[1], "rating": row[2], 'poster_url': row[3]} for row in movies}
+    return {row[0]: {"year": row[1], "rating": row[2], 'poster_url': row[3], 'imdbID': row[4]} for row in movies}
 
 
-def add_movie(title, year, rating, poster_url):
+def add_movie(title, year, rating, poster_url, imdbID):
     """Add a new movie to the database."""
     with engine.connect() as connection:
         try:
-            connection.execute(text("INSERT INTO movies (title, year, rating, poster_url) VALUES (:title, :year, :rating, :poster_url)"),
-                               {"title": title, "year": year, "rating": rating, "poster_url": poster_url})
+            connection.execute(text("INSERT INTO movies (title, year, rating, poster_url, imdbID) VALUES (:title, :year, :rating, :poster_url, :imdbID)"),
+                               {"title": title, "year": year, "rating": rating, "poster_url": poster_url, "imdbID": imdbID })
             connection.commit()
             print(f"Movie '{title}' added successfully.")
         except Exception as e:
